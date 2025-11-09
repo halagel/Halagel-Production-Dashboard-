@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Production Dashboard</title>
-    <!-- Fixed Tailwind CSS -->
+    <title>Halagel Production Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // Suppress Tailwind warnings
         tailwind.config = {
             corePlugins: {
                 preflight: false,
@@ -64,6 +62,9 @@
         .manpower-card {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
+        .export-btn {
+            background: linear-gradient(to right, #059669, #10b981);
+        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 min-h-screen">
@@ -73,7 +74,6 @@
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-4">
                     <div class="bg-gradient-to-br from-indigo-600 to-purple-600 p-3 rounded-xl shadow-lg">
-                        <!-- Custom Logo - Base64 Image -->
                         <img id="companyLogo" src="data:image/png;base64,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">
                     </div>
                     <div>
@@ -90,6 +90,32 @@
                             Toothpaste
                         </button>
                     </div>
+                    <div class="flex items-center space-x-2">
+                        <select id="monthSelect" class="px-3 py-2 border border-gray-300 rounded-lg text-sm">
+                            <option value="1">January</option>
+                            <option value="2">February</option>
+                            <option value="3">March</option>
+                            <option value="4">April</option>
+                            <option value="5">May</option>
+                            <option value="6">June</option>
+                            <option value="7">July</option>
+                            <option value="8">August</option>
+                            <option value="9">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                        <select id="yearSelect" class="px-3 py-2 border border-gray-300 rounded-lg text-sm">
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                        </select>
+                    </div>
+                    <button onclick="loadMonthlyData()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all text-sm">
+                        Load Month
+                    </button>
+                    <button onclick="exportToExcel()" class="px-4 py-2 export-btn text-white rounded-lg hover:shadow-lg transition-all text-sm">
+                        Export Excel
+                    </button>
                     <button onclick="loadData()" class="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg hover:shadow-lg transition-all">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
@@ -105,6 +131,29 @@
     </header>
 
     <div class="max-w-7xl mx-auto px-6 py-6">
+        <!-- Monthly Summary Section -->
+        <div id="monthlySummary" class="glass-effect rounded-2xl p-6 shadow-lg mb-6 hidden">
+            <h3 class="text-xl font-bold text-gray-800 mb-4">Monthly Summary - <span id="summaryMonthYear"></span></h3>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                    <p class="text-sm font-medium text-blue-700">Total Production</p>
+                    <p class="text-2xl font-bold text-blue-800" id="monthlyTotalProduction">0</p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+                    <p class="text-sm font-medium text-green-700">Average Efficiency</p>
+                    <p class="text-2xl font-bold text-green-800" id="monthlyEfficiency">0%</p>
+                </div>
+                <div class="bg-purple-50 p-4 rounded-lg border border-purple-200">
+                    <p class="text-sm font-medium text-purple-700">Total Manpower Days</p>
+                    <p class="text-2xl font-bold text-purple-800" id="monthlyManpower">0</p>
+                </div>
+                <div class="bg-red-50 p-4 rounded-lg border border-red-200">
+                    <p class="text-sm font-medium text-red-700">Total Defects</p>
+                    <p class="text-2xl font-bold text-red-800" id="monthlyDefects">0</p>
+                </div>
+            </div>
+        </div>
+
         <!-- Stats Cards Row 1 -->
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
             <div class="stat-card glass-effect rounded-2xl p-6 shadow-lg">
@@ -286,22 +335,22 @@
                                 <th colspan="4" class="px-3 py-3 bg-green-600 border-r border-green-500 font-bold">PACKING</th>
                             </tr>
                             <tr class="bg-gradient-to-r from-indigo-100 to-purple-100 text-gray-700 text-xs">
+                                <th class="px-2 py-2 border">Product</th>
+                                <th class="px-2 py-2 border">Batch</th>
                                 <th class="px-2 py-2 border">Planned</th>
                                 <th class="px-2 py-2 border">Actual</th>
+                                <th class="px-2 py-2 border">Product</th>
                                 <th class="px-2 py-2 border">Batch</th>
-                                <th class="px-2 py-2 border">Output</th>
                                 <th class="px-2 py-2 border">Planned</th>
                                 <th class="px-2 py-2 border">Actual</th>
+                                <th class="px-2 py-2 border">Product</th>
                                 <th class="px-2 py-2 border">Batch</th>
-                                <th class="px-2 py-2 border">Output</th>
                                 <th class="px-2 py-2 border">Planned</th>
                                 <th class="px-2 py-2 border">Actual</th>
+                                <th class="px-2 py-2 border">Product</th>
                                 <th class="px-2 py-2 border">Batch</th>
-                                <th class="px-2 py-2 border">Output</th>
-                                <th class="px-2 py-2 border">Planned</th>
                                 <th class="px-2 py-2 border">Target</th>
                                 <th class="px-2 py-2 border">Actual</th>
-                                <th class="px-2 py-2 border">Output</th>
                             </tr>
                         </thead>
                         <tbody id="dailyTableBody"></tbody>
@@ -312,7 +361,6 @@
     </div>
 
     <script>
-        // ⚠️ REPLACE THIS WITH YOUR ACTUAL GOOGLE APPS SCRIPT WEB APP URL ⚠️
         const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbyKaosUANGLPVAclh0_lHVV5FrQUJKjYK2LJ_6X3MYVu12Cs_84VN0bLy0TzG_KMmg/exec';
 
         const PRODUCTION_DATA = {
@@ -351,7 +399,14 @@
                     }
                 ],
                 daily: [
-                    {date: '08/12/2024', day: 'SUNDAY', data: ['Vitamin C', 'Vitamin C', 'B001', '95kg', 'Vitamin C', 'Vitamin C', 'E001', '480', 'Vitamin C', 'Vitamin C', 'S001', '475', 'Prodis-7gr', '3000', 'Prodis-7gr', '2950']}
+                    {
+                        date: '08/12/2024', 
+                        day: 'SUNDAY', 
+                        premixing: { product: 'Vitamin C', batch: 'B001', planned: '100kg', actual: '95kg' },
+                        encapsulation: { product: 'Vitamin C', batch: 'E001', planned: '500pcs', actual: '480pcs' },
+                        sorting: { product: 'Vitamin C', batch: 'S001', planned: '500pcs', actual: '475pcs' },
+                        packing: { product: 'Prodis-7gr', batch: 'P001', target: '3000', actual: '2950' }
+                    }
                 ]
             },
             toothpaste: {
@@ -389,12 +444,20 @@
                     }
                 ],
                 daily: [
-                    {date: '08/12/2024', day: 'SUNDAY', data: ['Whitening', 'Whitening', 'WT001', '795', 'Whitening', 'Whitening', 'WT001', '795', 'Whitening', 'Whitening', 'WT001', '790', 'Tube-100ml', '800', 'Tube-100ml', '795']}
+                    {
+                        date: '08/12/2024', 
+                        day: 'SUNDAY', 
+                        premixing: { product: 'Whitening', batch: 'WT001', planned: '800', actual: '795' },
+                        encapsulation: { product: 'Whitening', batch: 'WT001', planned: '800', actual: '795' },
+                        sorting: { product: 'Whitening', batch: 'WT001', planned: '800', actual: '790' },
+                        packing: { product: 'Tube-100ml', batch: 'P001', target: '800', actual: '795' }
+                    }
                 ]
             }
         };
 
         let currentProduction = 'healthcare';
+        let currentMonthlyData = null;
 
         function selectProduction(type) {
             currentProduction = type;
@@ -430,7 +493,6 @@
             const refreshBtn = document.getElementById('refreshBtn');
             refreshBtn.innerHTML = '<div class="loading"></div>';
             
-            // Add timestamp to prevent caching
             const timestamp = new Date().getTime();
             
             fetch(`${GOOGLE_SHEET_URL}?type=${currentProduction}&_=${timestamp}`)
@@ -441,16 +503,7 @@
                     return response.json();
                 })
                 .then(data => {
-                    document.getElementById('totalProduction').textContent = data.stats.totalProduction;
-                    document.getElementById('activeLines').textContent = data.stats.activeLines;
-                    document.getElementById('efficiency').textContent = data.stats.efficiency;
-                    document.getElementById('weekProduction').textContent = data.stats.weekProduction;
-                    
-                    updateManpowerData(data.manpower);
-                    
-                    renderWeeklySchedule(data.weekly);
-                    renderDailyOperations(data.daily);
-                    
+                    updateDashboardData(data);
                     refreshBtn.textContent = 'Refresh Data';
                     console.log('Data loaded successfully:', data);
                 })
@@ -458,9 +511,170 @@
                     console.error('Error fetching data:', error);
                     useSampleData();
                     refreshBtn.textContent = 'Refresh Data';
-                    // Show error message
                     showMessage('Using sample data. Check Google Apps Script setup.', 'warning');
                 });
+        }
+
+        async function loadMonthlyData() {
+            const month = document.getElementById('monthSelect').value;
+            const year = document.getElementById('yearSelect').value;
+            const type = currentProduction;
+            
+            const refreshBtn = document.getElementById('refreshBtn');
+            refreshBtn.innerHTML = '<div class="loading"></div>';
+            
+            try {
+                const response = await fetch(`${GOOGLE_SHEET_URL}?action=monthly&type=${type}&month=${month}&year=${year}`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    currentMonthlyData = data;
+                    displayMonthlyData(data);
+                    refreshBtn.textContent = 'Refresh Data';
+                } else {
+                    showMessage('No data available for selected month/year', 'warning');
+                    refreshBtn.textContent = 'Refresh Data';
+                }
+            } catch (error) {
+                console.error('Error loading monthly data:', error);
+                showMessage('Error loading monthly data', 'error');
+                refreshBtn.textContent = 'Refresh Data';
+            }
+        }
+
+        function displayMonthlyData(data) {
+            const monthlySummary = document.getElementById('monthlySummary');
+            monthlySummary.classList.remove('hidden');
+            
+            const monthNames = ["January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+            ];
+            
+            document.getElementById('summaryMonthYear').textContent = 
+                `${monthNames[data.month - 1]} ${data.year}`;
+            
+            document.getElementById('monthlyTotalProduction').textContent = 
+                data.summary.totalProduction.toLocaleString();
+            document.getElementById('monthlyEfficiency').textContent = data.summary.averageEfficiency;
+            document.getElementById('monthlyManpower').textContent = data.summary.totalManpower.toLocaleString();
+            document.getElementById('monthlyDefects').textContent = data.summary.totalDefects.toLocaleString();
+            
+            // Update the main dashboard with the first record of the month
+            if (data.data.length > 0) {
+                const latestRecord = data.data[data.data.length - 1];
+                updateDashboardData(processMonthlyRecord(latestRecord));
+            }
+        }
+
+        function processMonthlyRecord(record) {
+            return {
+                stats: {
+                    totalProduction: parseInt(record['Total Production']) || 0,
+                    activeLines: parseInt(record['Active Lines']) || 0,
+                    efficiency: record['Efficiency'] || '0%',
+                    weekProduction: parseInt(record['Week Production']) || 0
+                },
+                manpower: {
+                    total: parseInt(record['Total Manpower']) || 0,
+                    operators: parseInt(record['Operators']) || 0,
+                    teamLeaders: parseInt(record['Team Leaders']) || 0,
+                    technicians: parseInt(record['Technicians']) || 0,
+                    date: record['Date']
+                },
+                weekly: {
+                    activity: record['Activity Name'] || 'Sample Activity',
+                    planned: [
+                        record['Planned_SUN'], record['Planned_MON'], record['Planned_TUE'],
+                        record['Planned_WED'], record['Planned_THU'], record['Planned_FRI'],
+                        record['Planned_SAT'], record['Planned_Total']
+                    ],
+                    actual: [
+                        record['Actual_SUN'], record['Actual_MON'], record['Actual_TUE'],
+                        record['Actual_WED'], record['Actual_THU'], record['Actual_FRI'],
+                        record['Actual_SAT'], record['Actual_Total']
+                    ],
+                    defect: [
+                        record['Defect_SUN'], record['Defect_MON'], record['Defect_TUE'],
+                        record['Defect_WED'], record['Defect_THU'], record['Defect_FRI'],
+                        record['Defect_SAT'], record['Defect_Total']
+                    ]
+                },
+                daily: [{
+                    date: record['Date'],
+                    day: 'MONDAY', // You might want to calculate this from the date
+                    premixing: {
+                        product: record['Premix_Product'] || '',
+                        batch: record['Premix_Batch'] || '',
+                        planned: record['Premix_Planned'] || '',
+                        actual: record['Premix_Actual'] || ''
+                    },
+                    encapsulation: {
+                        product: record['Encap_Product'] || '',
+                        batch: record['Encap_Batch'] || '',
+                        planned: record['Encap_Planned'] || '',
+                        actual: record['Encap_Actual'] || ''
+                    },
+                    sorting: {
+                        product: record['Sort_Product'] || '',
+                        batch: record['Sort_Batch'] || '',
+                        planned: record['Sort_Planned'] || '',
+                        actual: record['Sort_Actual'] || ''
+                    },
+                    packing: {
+                        product: record['Pack_Product'] || '',
+                        batch: record['Pack_Batch'] || '',
+                        target: record['Pack_Target'] || '',
+                        actual: record['Pack_Actual'] || ''
+                    }
+                }]
+            };
+        }
+
+        async function exportToExcel() {
+            const month = document.getElementById('monthSelect').value;
+            const year = document.getElementById('yearSelect').value;
+            const type = currentProduction;
+            
+            try {
+                const response = await fetch(`${GOOGLE_SHEET_URL}?action=export&type=${type}&month=${month}&year=${year}`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    // Create and download CSV
+                    const csvContent = data.data.map(row => 
+                        row.map(field => `"${field}"`).join(',')
+                    ).join('\n');
+                    
+                    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = data.filename;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    window.URL.revokeObjectURL(url);
+                    
+                    showMessage('Export completed successfully!', 'success');
+                } else {
+                    showMessage('No data available to export', 'warning');
+                }
+            } catch (error) {
+                console.error('Error exporting data:', error);
+                showMessage('Error exporting data', 'error');
+            }
+        }
+
+        function updateDashboardData(data) {
+            document.getElementById('totalProduction').textContent = data.stats.totalProduction.toLocaleString();
+            document.getElementById('activeLines').textContent = data.stats.activeLines;
+            document.getElementById('efficiency').textContent = data.stats.efficiency;
+            document.getElementById('weekProduction').textContent = data.stats.weekProduction.toLocaleString();
+            
+            updateManpowerData(data.manpower);
+            
+            renderWeeklySchedule(data.weekly);
+            renderDailyOperations(data.daily);
         }
 
         function updateManpowerData(manpower) {
@@ -488,88 +702,157 @@
 
         function useSampleData() {
             const sampleData = PRODUCTION_DATA[currentProduction];
-            
-            document.getElementById('totalProduction').textContent = sampleData.stats.totalProduction;
-            document.getElementById('activeLines').textContent = sampleData.stats.activeLines;
-            document.getElementById('efficiency').textContent = sampleData.stats.efficiency;
-            document.getElementById('weekProduction').textContent = sampleData.stats.weekProduction;
-            
-            updateManpowerData(sampleData.manpower);
-            
-            renderWeeklySchedule(sampleData.weekly);
-            renderDailyOperations(sampleData.daily);
+            updateDashboardData(sampleData);
         }
 
         function renderWeeklySchedule(data) {
             var tbody = document.getElementById('scheduleTableBody');
             tbody.innerHTML = '';
 
-            data.forEach(function(activity) {
-                activity.shifts.forEach(function(shift, shiftIdx) {
-                    var row = document.createElement('tr');
-                    row.className = 'border-b hover:bg-purple-50';
-                    
-                    if (shiftIdx === 0) {
-                        var activityCell = document.createElement('td');
-                        activityCell.rowSpan = activity.shifts.length;
-                        activityCell.className = 'px-4 py-3 font-bold bg-indigo-50 border-r';
-                        activityCell.textContent = activity.activity;
-                        row.appendChild(activityCell);
-                    }
-                    
-                    var shiftCell = document.createElement('td');
-                    shiftCell.className = 'px-4 py-2 text-center font-semibold border-r ' + 
-                        (shift.type === 'Planned' ? 'bg-blue-50' : shift.type === 'Actual' ? 'bg-green-50' : 'bg-red-50');
-                    shiftCell.textContent = shift.type;
-                    row.appendChild(shiftCell);
-                    
-                    shift.data.forEach(function(cell, index) {
-                        var td = document.createElement('td');
-                        td.className = 'px-3 py-2 border-r text-xs table-cell';
-                        if (index === shift.data.length - 1) {
-                            td.className += ' font-bold bg-indigo-100';
-                        }
-                        td.innerHTML = cell.replace(/\n/g, '<br>');
-                        row.appendChild(td);
-                    });
-                    
-                    tbody.appendChild(row);
-                });
+            var row = document.createElement('tr');
+            row.className = 'border-b hover:bg-purple-50';
+            
+            var activityCell = document.createElement('td');
+            activityCell.rowSpan = 3;
+            activityCell.className = 'px-4 py-3 font-bold bg-indigo-50 border-r';
+            activityCell.textContent = data.activity;
+            row.appendChild(activityCell);
+            
+            // Planned row
+            var plannedShiftCell = document.createElement('td');
+            plannedShiftCell.className = 'px-4 py-2 text-center font-semibold border-r bg-blue-50';
+            plannedShiftCell.textContent = 'Planned';
+            row.appendChild(plannedShiftCell);
+            
+            data.planned.forEach((cell, index) => {
+                var td = document.createElement('td');
+                td.className = 'px-3 py-2 border-r text-xs table-cell';
+                if (index === data.planned.length - 1) {
+                    td.className += ' font-bold bg-blue-100';
+                }
+                td.innerHTML = cell.replace(/\n/g, '<br>');
+                row.appendChild(td);
             });
+            
+            tbody.appendChild(row);
+
+            // Actual row
+            row = document.createElement('tr');
+            row.className = 'border-b hover:bg-purple-50';
+            
+            var actualShiftCell = document.createElement('td');
+            actualShiftCell.className = 'px-4 py-2 text-center font-semibold border-r bg-green-50';
+            actualShiftCell.textContent = 'Actual';
+            row.appendChild(actualShiftCell);
+            
+            data.actual.forEach((cell, index) => {
+                var td = document.createElement('td');
+                td.className = 'px-3 py-2 border-r text-xs table-cell';
+                if (index === data.actual.length - 1) {
+                    td.className += ' font-bold bg-green-100';
+                }
+                td.innerHTML = cell.replace(/\n/g, '<br>');
+                row.appendChild(td);
+            });
+            
+            tbody.appendChild(row);
+
+            // Defect row
+            row = document.createElement('tr');
+            row.className = 'border-b hover:bg-purple-50';
+            
+            var defectShiftCell = document.createElement('td');
+            defectShiftCell.className = 'px-4 py-2 text-center font-semibold border-r bg-red-50';
+            defectShiftCell.textContent = 'Defect';
+            row.appendChild(defectShiftCell);
+            
+            data.defect.forEach((cell, index) => {
+                var td = document.createElement('td');
+                td.className = 'px-3 py-2 border-r text-xs table-cell';
+                if (index === data.defect.length - 1) {
+                    td.className += ' font-bold bg-red-100';
+                }
+                td.innerHTML = cell.replace(/\n/g, '<br>');
+                row.appendChild(td);
+            });
+            
+            tbody.appendChild(row);
         }
 
         function renderDailyOperations(data) {
             var tbody = document.getElementById('dailyTableBody');
             tbody.innerHTML = '';
 
-            data.forEach(function(row) {
+            data.forEach(function(record) {
                 var tr = document.createElement('tr');
                 tr.className = 'border-b hover:bg-purple-50';
                 
                 var dateCell = document.createElement('td');
                 dateCell.className = 'px-2 py-3 border font-semibold';
-                dateCell.textContent = row.date;
+                dateCell.textContent = record.date;
                 tr.appendChild(dateCell);
                 
                 var dayCell = document.createElement('td');
                 dayCell.className = 'px-2 py-3 border font-semibold text-indigo-600';
-                dayCell.textContent = row.day;
+                dayCell.textContent = record.day;
                 tr.appendChild(dayCell);
                 
-                row.data.forEach(function(cell, index) {
+                // Premixing data
+                const premixCells = [
+                    record.premixing.product,
+                    record.premixing.batch,
+                    record.premixing.planned,
+                    record.premixing.actual
+                ];
+                
+                premixCells.forEach((cell, index) => {
                     var td = document.createElement('td');
-                    td.className = 'px-2 py-2 border text-xs table-cell';
-                    
-                    if (index % 4 === 0) {
-                        td.className += ' bg-yellow-50';
-                    } else if (index % 4 === 1) {
-                        td.className += ' bg-green-50';
-                    } else if (index % 4 === 2) {
-                        td.className += ' bg-blue-50';
-                    } else if (index % 4 === 3) {
-                        td.className += ' bg-purple-50';
-                    }
-                    
+                    td.className = 'px-2 py-2 border text-xs table-cell bg-yellow-50';
+                    td.textContent = cell;
+                    tr.appendChild(td);
+                });
+                
+                // Encapsulation data
+                const encapCells = [
+                    record.encapsulation.product,
+                    record.encapsulation.batch,
+                    record.encapsulation.planned,
+                    record.encapsulation.actual
+                ];
+                
+                encapCells.forEach((cell, index) => {
+                    var td = document.createElement('td');
+                    td.className = 'px-2 py-2 border text-xs table-cell bg-orange-50';
+                    td.textContent = cell;
+                    tr.appendChild(td);
+                });
+                
+                // Sorting data
+                const sortCells = [
+                    record.sorting.product,
+                    record.sorting.batch,
+                    record.sorting.planned,
+                    record.sorting.actual
+                ];
+                
+                sortCells.forEach((cell, index) => {
+                    var td = document.createElement('td');
+                    td.className = 'px-2 py-2 border text-xs table-cell bg-blue-50';
+                    td.textContent = cell;
+                    tr.appendChild(td);
+                });
+                
+                // Packing data
+                const packCells = [
+                    record.packing.product,
+                    record.packing.batch,
+                    record.packing.target,
+                    record.packing.actual
+                ];
+                
+                packCells.forEach((cell, index) => {
+                    var td = document.createElement('td');
+                    td.className = 'px-2 py-2 border text-xs table-cell bg-green-50';
                     td.textContent = cell;
                     tr.appendChild(td);
                 });
@@ -582,7 +865,9 @@
             // Create a temporary message element
             const messageDiv = document.createElement('div');
             messageDiv.className = `fixed top-4 right-4 p-4 rounded-lg z-50 ${
-                type === 'warning' ? 'bg-yellow-100 text-yellow-800 border border-yellow-200' : 'bg-red-100 text-red-800 border border-red-200'
+                type === 'warning' ? 'bg-yellow-100 text-yellow-800 border border-yellow-200' : 
+                type === 'error' ? 'bg-red-100 text-red-800 border border-red-200' :
+                'bg-green-100 text-green-800 border border-green-200'
             }`;
             messageDiv.textContent = text;
             document.body.appendChild(messageDiv);
@@ -592,8 +877,12 @@
             }, 5000);
         }
 
-        // Initialize dashboard when page loads
-        window.addEventListener('DOMContentLoaded', function() {
+        // Set current month and year
+        document.addEventListener('DOMContentLoaded', function() {
+            const now = new Date();
+            document.getElementById('monthSelect').value = now.getMonth() + 1;
+            document.getElementById('yearSelect').value = now.getFullYear();
+            
             loadData();
         });
     </script>
