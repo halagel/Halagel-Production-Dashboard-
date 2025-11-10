@@ -74,10 +74,6 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
         
-        .export-btn {
-            background: linear-gradient(to right, #059669, #10b981);
-        }
-        
         /* Utility Classes */
         .hidden { display: none; }
         .flex { display: flex; }
@@ -339,9 +335,7 @@
                     <button onclick="loadMonthlyData()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all text-sm">
                         Load Month
                     </button>
-                    <button onclick="exportToExcel()" class="px-4 py-2 export-btn text-white rounded-lg hover:shadow-lg transition-all text-sm">
-                        Export Excel
-                    </button>
+                    <!-- Removed Export Excel button -->
                     <button onclick="loadData()" class="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg hover:shadow-lg transition-all">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
@@ -424,23 +418,7 @@
                 </div>
             </div>
             
-            <div class="stat-card glass-effect rounded-2xl p-6 shadow-lg">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-sm font-medium text-gray-600">This Week</p>
-                        <p class="text-3xl font-bold text-pink-600 mt-2" id="weekProduction">8200</p>
-                    </div>
-                    <div class="bg-pink-100 p-4 rounded-xl">
-                        <svg class="w-8 h-8 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Manpower Section -->
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+            <!-- Simplified Manpower Card - Just Total Manpower -->
             <div class="stat-card manpower-card rounded-2xl p-6 shadow-lg text-white">
                 <div class="flex items-center justify-between">
                     <div>
@@ -451,53 +429,6 @@
                     <div class="bg-white bg-opacity-20 p-4 rounded-xl">
                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-
-            <div class="stat-card glass-effect rounded-2xl p-6 shadow-lg">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-sm font-medium text-gray-600">Operators</p>
-                        <p class="text-3xl font-bold text-blue-600 mt-2" id="operators">32</p>
-                        <p class="text-xs text-gray-500 mt-1" id="operatorsPercent">67% of total</p>
-                    </div>
-                    <div class="bg-blue-100 p-4 rounded-xl">
-                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-
-            <div class="stat-card glass-effect rounded-2xl p-6 shadow-lg">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-sm font-medium text-gray-600">Team Leaders</p>
-                        <p class="text-3xl font-bold text-green-600 mt-2" id="teamLeaders">8</p>
-                        <p class="text-xs text-gray-500 mt-1" id="teamLeadersPercent">17% of total</p>
-                    </div>
-                    <div class="bg-green-100 p-4 rounded-xl">
-                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-
-            <div class="stat-card glass-effect rounded-2xl p-6 shadow-lg">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-sm font-medium text-gray-600">Technicians</p>
-                        <p class="text-3xl font-bold text-orange-600 mt-2" id="technicians">8</p>
-                        <p class="text-xs text-gray-500 mt-1" id="techniciansPercent">17% of total</p>
-                    </div>
-                    <div class="bg-orange-100 p-4 rounded-xl">
-                        <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                         </svg>
                     </div>
                 </div>
@@ -587,7 +518,7 @@
     </div>
 
     <script>
-        const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbx0y_QkXc9gnWlhfsrKJscB86tSZ0OyC5ZIkURvaIpk3Nk6FqXYR-aawKk8CT2nikl-ww/exec';
+        const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbzPwwJd2l1GOK0GrdMjhQaijhzw4s8kpzgzQzQ-FWoO3RnnVFdU4x99WEw_ySaEKF56RA/exec';
 
         const PRODUCTION_DATA = {
             healthcare: {
@@ -600,9 +531,6 @@
                 },
                 manpower: {
                     total: 48,
-                    operators: 32,
-                    teamLeaders: 8,
-                    technicians: 8,
                     date: "2024-12-10"
                 },
                 weekly: [
@@ -645,9 +573,6 @@
                 },
                 manpower: {
                     total: 36,
-                    operators: 24,
-                    teamLeaders: 6,
-                    technicians: 6,
                     date: "2024-12-10"
                 },
                 weekly: [
@@ -745,8 +670,66 @@
                 });
         }
 
-        // Rest of your JavaScript functions remain exactly the same...
-        // Only changed the data structure to use 'process' instead of 'encapsulation'/'filling'
+        function updateDashboardData(data) {
+            // Update stats cards
+            document.getElementById('totalProduction').textContent = data.stats.totalProduction;
+            document.getElementById('activeLines').textContent = data.stats.activeLines;
+            document.getElementById('efficiency').textContent = data.stats.efficiency;
+            document.getElementById('weekProduction').textContent = data.stats.weekProduction;
+            
+            // Update manpower (simplified - just total)
+            document.getElementById('totalManpower').textContent = data.manpower.total;
+            document.getElementById('manpowerDate').textContent = formatDate(data.manpower.date);
+            
+            // Render tables
+            renderScheduleTable(data.weekly);
+            renderDailyOperations(data.daily);
+        }
+
+        function useSampleData() {
+            updateDashboardData(PRODUCTION_DATA[currentProduction]);
+        }
+
+        function renderScheduleTable(weeklyData) {
+            var tbody = document.getElementById('scheduleTableBody');
+            tbody.innerHTML = '';
+
+            weeklyData.forEach(function(item) {
+                item.shifts.forEach(function(shift, index) {
+                    var tr = document.createElement('tr');
+                    tr.className = index % 2 === 0 ? 'bg-gray-50' : 'bg-white';
+                    
+                    if (index === 0) {
+                        var activityCell = document.createElement('td');
+                        activityCell.className = 'px-4 py-3 border-r border-gray-300 font-semibold text-gray-800';
+                        activityCell.rowSpan = item.shifts.length;
+                        activityCell.textContent = item.activity;
+                        tr.appendChild(activityCell);
+                    }
+                    
+                    var shiftCell = document.createElement('td');
+                    shiftCell.className = 'px-4 py-3 border-r border-gray-300 font-medium';
+                    shiftCell.textContent = shift.type;
+                    tr.appendChild(shiftCell);
+                    
+                    shift.data.forEach(function(cellData, i) {
+                        var td = document.createElement('td');
+                        td.className = 'px-3 py-2 border-r border-gray-300 text-center text-sm';
+                        
+                        if (cellData === 'OFF' || cellData === '-') {
+                            td.className += ' text-gray-400';
+                        } else if (i === shift.data.length - 1) {
+                            td.className += ' font-bold bg-gray-100';
+                        }
+                        
+                        td.innerHTML = cellData.replace(/\n/g, '<br>');
+                        tr.appendChild(td);
+                    });
+                    
+                    tbody.appendChild(tr);
+                });
+            });
+        }
 
         function renderDailyOperations(data) {
             var tbody = document.getElementById('dailyTableBody');
@@ -830,7 +813,45 @@
             });
         }
 
-        // ... rest of your existing JavaScript code
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+        }
+
+        function showMessage(message, type) {
+            // Simple message display - you can enhance this if needed
+            console.log(`${type.toUpperCase()}: ${message}`);
+        }
+
+        // Removed exportToExcel function
+
+        function loadMonthlyData() {
+            const month = document.getElementById('monthSelect').value;
+            const year = document.getElementById('yearSelect').value;
+            
+            // Show monthly summary section
+            document.getElementById('monthlySummary').classList.remove('hidden');
+            document.getElementById('summaryMonthYear').textContent = 
+                `${new Date(year, month-1).toLocaleString('default', { month: 'long' })} ${year}`;
+            
+            // Calculate monthly data (this would normally come from the server)
+            const monthlyData = {
+                totalProduction: Math.floor(Math.random() * 50000) + 40000,
+                efficiency: `${Math.floor(Math.random() * 10) + 85}%`,
+                manpower: Math.floor(Math.random() * 1000) + 800,
+                defects: Math.floor(Math.random() * 500) + 100
+            };
+            
+            document.getElementById('monthlyTotalProduction').textContent = monthlyData.totalProduction;
+            document.getElementById('monthlyEfficiency').textContent = monthlyData.efficiency;
+            document.getElementById('monthlyManpower').textContent = monthlyData.manpower;
+            document.getElementById('monthlyDefects').textContent = monthlyData.defects;
+        }
 
         // Set current month and year
         document.addEventListener('DOMContentLoaded', function() {
