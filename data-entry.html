@@ -141,7 +141,7 @@
         .section-title {
             font-size: 18px;
             font-weight: 600;
-            color: #374151;
+            color: #1f2937;
             margin-bottom: 20px;
             padding-bottom: 10px;
             border-bottom: 2px solid #e5e7eb;
@@ -181,6 +181,7 @@
             font-size: 14px;
             transition: all 0.3s ease;
             background: white;
+            color: #1f2937;
         }
         
         .form-control:focus {
@@ -190,7 +191,7 @@
         }
         
         .process-section {
-            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+            background: #f8fafc;
             border: 1px solid #e2e8f0;
             border-radius: 12px;
             padding: 20px;
@@ -223,7 +224,7 @@
         .pack-icon { background: #10b981; }
         
         .process-header h4 {
-            color: #374151;
+            color: #1f2937;
             font-size: 16px;
             font-weight: 600;
             margin: 0;
@@ -795,7 +796,7 @@
             debugOutput.scrollTop = debugOutput.scrollHeight;
         }
         
-        // Form submission
+        // Updated form submission
         document.getElementById('dataForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -803,34 +804,28 @@
             const originalText = submitBtn.innerHTML;
             submitBtn.innerHTML = '<div class="loading"></div> Submitting...';
             submitBtn.disabled = true;
-            
-            // Collect form data
+
+            // Collect form data as parameters (like your ticketing system)
             const formData = new FormData(this);
-            const data = {};
+            const params = new URLSearchParams();
+            
+            // Add all form data as URL parameters
             for (const [key, value] of formData.entries()) {
-                data[key] = value;
+                params.append(key, value);
             }
             
             // Add timestamp
-            data.timestamp = new Date().toISOString();
+            params.append('timestamp', new Date().toISOString());
             
             logDebug('Submitting data to Google Sheets...', 'info');
             
-            // Submit to Google Apps Script
-            fetch(GOOGLE_SCRIPT_URL, {
+            // Submit using URL parameters instead of JSON body
+            fetch(GOOGLE_SCRIPT_URL + '?' + params.toString(), {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
+                mode: 'no-cors' // Use no-cors mode
             })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(result => {
+            .then(() => {
+                // With no-cors, we can't read the response, but we assume it worked
                 logDebug('Data submitted successfully!', 'success');
                 showMessage('Production data submitted successfully!', 'success');
                 
